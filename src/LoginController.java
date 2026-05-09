@@ -1,14 +1,11 @@
+import java.util.Scanner;
 
+public class LoginController {
 
-public class Main {
-    public static void main(String[] args) {
+    static void login(){
 
-        LoginController.login();
-        /* Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         User user = new User();
-
-        //Variables
-
         // Accept user input for username and password
 
         System.out.print("Enter your username: ");
@@ -36,9 +33,5 @@ public class Main {
         else {
             System.out.println("Username is too short!");// Message when username has less than 3 characters in the input
         }
-
-         */
-
-
     }
 }

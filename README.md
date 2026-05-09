@@ -7,6 +7,7 @@ A java console app that receives and authenticates usernames and passwords.
 
 ## Features
 - Receive username and password
+- Measure length of the strings
 - Validate inputs
 - Grant access to user
 
