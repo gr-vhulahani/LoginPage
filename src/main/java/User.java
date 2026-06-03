@@ -1,52 +1,37 @@
 public class User {
 
-    // ==========================================
-    // FIElDS
-    // ==========================================
+    // Fields
+    private String storedUsername = "john";
+    private String inputUsername;
 
-    private String stored_username = "john";
-    private String newUsername;
+    private String storedPassword = "janedoe1";
+    private String inputPassword;
 
-    private String stored_userPassword = "janedoe1";
-    private String userPassword;
-
-    // ==========================================
-    // GETTERS
-    // ==========================================
-
-    //Getter for username
-
-    public String getUsername(){
-        return stored_username;
-    }
-    //Getter for password
-    public String getPassword(){
-        return stored_userPassword;
-    }
-    //Getter for password input
-    public String getUsernameInput(){
-        return newUsername;
-    }
-    //Getter for input  username
-    public String getPasswordInput(){
-        return userPassword;
+    // Getters
+    public String getUsername() {
+        return storedUsername;
     }
 
-    // ==========================================
-    // SETTERS
-    // ==========================================
-
-    //Setter for username input
-    public void setUsername(String username){
-        this.stored_username = newUsername;
+    public String getPassword() {
+        return storedPassword;
     }
 
-
-    //Setter for password input
-    public void setPassword(String user_pass){
-        this.userPassword = userPassword;
+    public String getUsernameInput() {
+        return inputUsername;
     }
 
+    public String getPasswordInput() {
+        return inputPassword;
+    }
+
+    // Setters
+    public void setUsername(String username) {
+        this.inputUsername = username;
+    }
+
+    public void setPassword(String password) {
+        this.inputPassword = password;
+    }
 
 
 }

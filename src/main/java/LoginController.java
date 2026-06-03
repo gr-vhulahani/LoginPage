@@ -2,36 +2,61 @@ import java.util.Scanner;
 
 public class LoginController {
 
-    static void login(){
+    private static final int MIN_USERNAME_LENGTH = 3;
+    private static final int MIN_PASSWORD_LENGTH = 8;
 
+    public static void login() {
         Scanner scanner = new Scanner(System.in);
         User user = new User();
-        // Accept user input for username and password
 
+        // Get username input
         System.out.print("Enter your username: ");
         user.setUsername(scanner.nextLine());
 
-
-
-        if((user.getUsernameInput()).length() >= 3){   //if the length of the username is equal/greater than 3, then its accepted
-            if((user.getUsernameInput()).trim().equals(user.getUsername())){  //if a username is submitted with whitespace they will be trimmed
-
-                System.out.print("Enter your password: ");
-                user.setPassword(scanner.nextLine());
-                if((user.getPasswordInput()).length() >= 8){    //if the length of the password is equal/greater than 8, then its accepted
-                    if(user.getPasswordInput().equals(user.getPassword())){
-                        System.out.println("Access granted"); // Message when both username and password are correct
-                    }
-                }
-                else{
-                    System.out.println("Password is too short!"); // Message when username is correct but password is incorrect
-                }
-            }else{
-                System.out.println("User does not exist!"); //Message when username is not found in the list of users, so password input is skipped entirely
-            }
+        // Validate username
+        if (!isValidUsername(user)) {
+            System.out.println("Username is too short!");
+            return;
         }
-        else {
-            System.out.println("Username is too short!");// Message when username has less than 3 characters in the input
+
+        if (!isUsernameMatch(user)) {
+            System.out.println("User does not exist!");
+            return;
         }
+
+        // Get password input
+        System.out.print("Enter your password: ");
+        user.setPassword(scanner.nextLine());
+
+        // Validate password
+        if (!isValidPassword(user)) {
+            System.out.println("Password is too short!");
+            return;
+        }
+
+        if (!isPasswordMatch(user)) {
+            System.out.println("Access denied!");
+            return;
+        }
+
+        System.out.println("Access granted");
+        scanner.close();
     }
+
+    private static boolean isValidUsername(User user) {
+        return user.getUsernameInput().length() >= MIN_USERNAME_LENGTH;
+    }
+
+    private static boolean isUsernameMatch(User user) {
+        return user.getUsernameInput().trim().equals(user.getUsername());
+    }
+
+    private static boolean isValidPassword(User user) {
+        return user.getPasswordInput().length() >= MIN_PASSWORD_LENGTH;
+    }
+
+    private static boolean isPasswordMatch(User user) {
+        return user.getPasswordInput().equals(user.getPassword());
+    }
+
 }
